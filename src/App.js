@@ -12,29 +12,47 @@ function App({ signOut, user }) {
     setFoundKanji([...new Set(searchedText.match(/[一-龯]/g))]);
   }
 
+  const clearInput = () => {
+    document.querySelector(".text-input").value = "";
+    setFoundKanji([]);
+  }
+
   return (
     <>
       <Nav signOut={signOut} />
       <main style={{textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center"}}>
-        <p style={{color: "#cbd5e1", marginBottom: "32px"}}>Signed in as {user.attributes.email}</p>
+        <p style={{color: "#cbd5e1", marginBottom: "24px"}}>Signed in as {user.attributes.email}</p>
         <div>
+          <h3 style={{textAlign: "left", margin: "6px 0", color: "#64748b"}}>Find kanji in text:</h3>
           <textarea
             placeholder="Text to search..."
             className="text-input"
           >
           </textarea>
 
-          <button
-            onClick={searchText}
-            className="button"
-          >Find kanji</button>
+          <div style={{display: "flex"}}>
+            <button
+              onClick={searchText}
+              className="button-pink"
+            >
+              Search
+            </button>
+            <button
+              onClick={clearInput}
+              className="button-white"
+              style={{marginLeft: "6px"}}
+            >
+              Clear
+            </button>
+          </div>
 
-          {foundKanji.length > 0 &&
-            <div className="found-kanji">
-              <h3>Kanji found:</h3>
-              <p>{foundKanji}</p>
-            </div>
-          }
+          <div className="found-kanji">
+            <h3>Kanji found:</h3>
+            {foundKanji.length > 0
+              ? <p>{foundKanji}</p>
+              : <p style={{color: "#cbd5e1", fontSize: "18px"}}>None yet!</p>
+            }
+          </div>
         </div>
       </main>
     </>
