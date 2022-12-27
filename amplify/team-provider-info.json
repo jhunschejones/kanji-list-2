@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "kanjilist217373125": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1arfee5xz7bjs",
+          "type": "cicd"
+        }
       }
     }
   }

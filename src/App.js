@@ -1,14 +1,41 @@
 import { withAuthenticator } from "@aws-amplify/ui-react";
+import { useState } from "react";
 import { Nav } from "./components/Nav";
 // required for default amplify UIs
 import "@aws-amplify/ui-react/styles.css";
 
 function App({ signOut, user }) {
+  const [foundKanji, setFoundKanji] = useState([])
+
+  const searchText = () => {
+    const searchedText = document.querySelector(".text-input").value;
+    setFoundKanji([...new Set(searchedText.match(/[一-龯]/g))]);
+  }
+
   return (
     <>
       <Nav signOut={signOut} />
-      <main>
-        <p>Signed in as {user.attributes.email}</p>
+      <main style={{textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center"}}>
+        <p style={{color: "#cbd5e1", marginBottom: "32px"}}>Signed in as {user.attributes.email}</p>
+        <div>
+          <textarea
+            placeholder="Text to search..."
+            className="text-input"
+          >
+          </textarea>
+
+          <button
+            onClick={searchText}
+            className="button"
+          >Find kanji</button>
+
+          {foundKanji.length > 0 &&
+            <div className="found-kanji">
+              <h3>Kanji found:</h3>
+              <p>{foundKanji}</p>
+            </div>
+          }
+        </div>
       </main>
     </>
   );
