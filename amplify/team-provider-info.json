@@ -10,6 +10,11 @@
       "StackName": "amplify-kanjilist2-dev-125527",
       "StackId": "arn:aws:cloudformation:us-east-2:050810144108:stack/amplify-kanjilist2-dev-125527/077a5c30-8618-11ed-8685-06724f7c3d3a",
       "AmplifyAppId": "d1arfee5xz7bjs"
+    },
+    "categories": {
+      "auth": {
+        "kanjilist217373125": {}
+      }
     }
   }
 }
