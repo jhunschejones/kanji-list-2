@@ -22,7 +22,7 @@ function App({ signOut, user }) {
       <Nav signOut={signOut} />
       <main style={{textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center"}}>
         <p style={{color: "#cbd5e1", marginBottom: "24px"}}>Signed in as {user.attributes.email}</p>
-        <div>
+        <div style={{width: "100%", maxWidth: "500px"}}>
           <h3 style={{textAlign: "left", margin: "6px 0", color: "#64748b"}}>Find kanji in text:</h3>
           <textarea
             placeholder="Text to search..."
